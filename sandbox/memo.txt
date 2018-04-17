@@ -1,0 +1,6 @@
+■PSQL タブ区切りでレコードを標準出力
+COPY tablename TO stdout  WITH CSV DELIMITER E'\t' FORCE QUOTE * NULL AS '' HEADER;
+COPY (select * from tablename where ～)  TO stdout  WITH CSV DELIMITER E'\t' FORCE QUOTE * NULL AS '' HEADER;
+
+■JSON整形
+cat ファイル名 | cut -f 3 | jq .aaa -r | grep bbb | jq .
