@@ -2,5 +2,53 @@
 COPY tablename TO stdout  WITH CSV DELIMITER E'\t' FORCE QUOTE * NULL AS '' HEADER;
 COPY (select * from tablename where ～)  TO stdout  WITH CSV DELIMITER E'\t' FORCE QUOTE * NULL AS '' HEADER;
 
+psql -U postgres -h localhost -p 5432 -d <<DB名>>
+
 ■JSON整形
 cat ファイル名 | cut -f 3 | jq .aaa -r | grep bbb | jq .
+
+■git
+mkdir sample
+cd sample
+touch README.md
+git init
+git add README.md
+git config --local user.name <<username>>
+git config --local user.email <<mail>>
+git config --list
+git commit -m "初期コミット"
+git remote add origin http://xxx.git
+git push -u origin master
+git branch develop
+git checkout develop
+git push origin develop
+cd ..
+
+git clone -b develop http://XXX.git
+
+git branch --delete <<ブランチ名>>
+
+git log --merges --first-parent --pretty='format:%an%x09%cd%x09%s%x09%b%x09%h' --date=iso
+
+■mvn
+mvn clean install -DskipTests=true
+
+mvn clean package -P <<プロファイル名>> -DskipTests=true
+
+■シェル
+sudo su root
+
+chown -R tomcat:root <<ファイル名>>
+
+chmod -R 755 <<ファイル名>>
+
+sudo -u tomcat ./test.sh
+
+find . -mtime -0.1 -ls
+
+tail -n 100 ファイル名
+
+curl -X POST -H "Accept:application/json" -H "Content-Type:application/json" http://localhost:9080/xxx
+
+■jmeter
+jmeter -n -t test.jmx -l test.jtl
